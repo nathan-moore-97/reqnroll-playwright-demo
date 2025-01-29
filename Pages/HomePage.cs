@@ -18,21 +18,21 @@ public class HomePage(IPageDependencyService pageDependencyService)
 
     public async Task ClickOnSupportButtonAsync()
     {
-        var supportButton = await ReturnButtonFromHeaderOptionsAsync("support");
+        var supportButton = await ReturnElementByContent(HeaderNavigationOptions, "support");
 
         await supportButton.ClickAsync();
     }
 
     public async Task ClickOnQuickstartButtonAsync()
     {
-        var quickstartButton = await ReturnButtonFromHeaderOptionsAsync("quickstart");
+        var quickstartButton = await ReturnElementByContent(HeaderNavigationOptions, "quickstart");
 
         await quickstartButton.ClickAsync();
     }
 
     public async Task ClickOnDiscoverMoreButtonAsync()
     {
-        var discoverMoreBtn = await ReturnAHrefFromBodyAsync("Discover More");
+        var discoverMoreBtn = await ReturnElementByContent(PageButtonOptions, "Discover More");
         await discoverMoreBtn.ClickAsync();
     }
 
@@ -41,32 +41,15 @@ public class HomePage(IPageDependencyService pageDependencyService)
         return await _pageDependencyService.Page.Result.WaitForPopupAsync();
     }
 
-    private async Task<IElementHandle> ReturnButtonFromHeaderOptionsAsync(string btnOption)
+    private async Task<IElementHandle> ReturnElementByContent(ILocator locator, string content)
     {
-        foreach (var option in await HeaderNavigationOptions.ElementHandlesAsync())
+        foreach (var element in await locator.ElementHandlesAsync())
         {
-            var optionText = await option.TextContentAsync();
+            var elementText = await element.TextContentAsync();
 
-            if (optionText.Equals(btnOption, StringComparison.InvariantCultureIgnoreCase))
+            if (elementText!.Equals(content, StringComparison.InvariantCultureIgnoreCase))
             {
-                return option;
-            }
-        }
-       
-        return null;
-    }
-
-    // Redundant, parameterize me
-    private async Task<IElementHandle> ReturnAHrefFromBodyAsync(string content)
-    {
-        foreach (var option in await PageButtonOptions.ElementHandlesAsync())
-        {
-            //var element = await option.QuerySelectorAsync("a");
-            var optionText = await option?.TextContentAsync();
-
-            if (optionText.Equals(content, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return option;
+                return element;
             }
         }
 
