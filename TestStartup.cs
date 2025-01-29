@@ -68,6 +68,7 @@ public static class TestStartup
     {
         builder.RegisterType<HomePage>().AsSelf().InstancePerDependency();
         builder.RegisterType<SupportPage>().AsSelf().InstancePerDependency();
+        builder.RegisterType<AboutPage>().AsSelf().InstancePerDependency();
     }
 
     private static void RegisterPagesHandler(this ContainerBuilder builder)

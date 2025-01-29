@@ -35,14 +35,15 @@ public class StepDefinitions(IPageService pageService)
 
         await _newTab.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
 
+        // This might be an anti pattern
         TabStackService.Instance.Push(_newTab);
 
     }
 
     [When("The Discover More button is clicked")]
-    public void WhenTheDiscoverMoreButtonIsClicked()
+    public async Task WhenTheDiscoverMoreButtonIsClicked()
     {
-        throw new PendingStepException();
+        await _pageService.HomePage.ClickOnDiscoverMoreButtonAsync();
     }
 
 
