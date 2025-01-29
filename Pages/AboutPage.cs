@@ -14,7 +14,7 @@ public class AboutPage(IPageDependencyService pageDependencyService)
 
     public ILocator H2Texts => _pageDependencyService.Page.Result.Locator("h2");
 
-    public async Task<bool> TextContainsGivenValueAsync(string value)
+    public async Task<bool> H2ContainsGivenValue(string value)
     {
         foreach (var text in await H2Texts.ElementHandlesAsync())
         {

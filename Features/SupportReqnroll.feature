@@ -5,7 +5,7 @@ This feature will check the subscription packages
 Scenario: Subscription Packages
 	Given The Reqnroll page is loaded
 	When The support button is clicked
-	Then The following textx are visible
+	Then The following Support Page texts are visible
 	| Key   | Value        |
 	| Tier1 | Community    |
 	| Tier2 | Professional |
@@ -23,7 +23,7 @@ Scenario: The news feed loads
 Scenario: Learn More Headings
 	Given The Reqnroll page is loaded
 	When The Discover More button is clicked
-	Then The following textx are visible
+	Then The following about page texts are visible
 	| Key | Value                |
 	| 0   | Relation to SpecFlow |
 	| 1   | Relation to Cucumber |

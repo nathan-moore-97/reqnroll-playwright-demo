@@ -1,4 +1,5 @@
 using FluentAssertions;
+using FluentAssertions.Collections;
 using Microsoft.Playwright;
 using Reqnroll;
 using Reqnroll.CommonModels;
@@ -36,7 +37,7 @@ public class StepDefinitions(IPageService pageService)
         await _newTab.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
 
         // This might be an anti pattern
-        TabStackService.Instance.Push(_newTab);
+        TabManager.Instance.Push(_newTab);
 
     }
 
@@ -47,8 +48,8 @@ public class StepDefinitions(IPageService pageService)
     }
 
 
-    [Then("The following textx are visible")]
-    public async Task ThenTheFollowingTextxAreVisible(DataTable dataTable)
+    [Then("The following Support Page texts are visible")]
+    public async Task ThenTheFollowingSupportPageTextsAreVisible(DataTable dataTable)
     {
         var tableRows = dataTable.ToDictionary();
         foreach (var row in tableRows)
@@ -58,17 +59,31 @@ public class StepDefinitions(IPageService pageService)
         }
     }
 
+    [Then("The following about page texts are visible")]
+    public async Task ThenTheFollowingAboutPageTextsAreVisible(DataTable dataTable)
+    {
+        var tableRows = dataTable.ToDictionary();
+        foreach (var row in tableRows)
+        {
+            var textMatches = await _pageService.AboutPage.H2ContainsGivenValue(row.Value);
+            textMatches.Should().BeTrue();
+        }
+    }
+
+
     [Then("a new tab should be opened to {string}")]
     public void ThenANewTabShouldBeOpenedTo(string url)
     {
         IPage newTab;
-        TabStackService.Instance.TryPop(out newTab);
+        TabManager.Instance.TryPop(out newTab);
         newTab.Url.Should().Be(url);
     }
 
     [Then("the news feed has items")]
-    public void ThenTheNewsFeedHasItems()
+    public async Task ThenTheNewsFeedHasItems()
     {
-        throw new PendingStepException();
+        IReadOnlyList<IElementHandle> feed = await _pageService.HomePage.ReturnListOfNewsItems();
+        feed.Should().NotBeEmpty();
+
     }
 }

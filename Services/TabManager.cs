@@ -1,17 +1,16 @@
 ﻿using System.Collections.Concurrent;
 using Microsoft.Playwright;
 
-public sealed class TabStackService
+public sealed class TabManager
 {
     private readonly ConcurrentStack<IPage> _stack = new ConcurrentStack<IPage>();
 
     // Singleton
-    private static readonly TabStackService instance = new TabStackService();
+    private static readonly TabManager instance = new TabManager();
 
-    static TabStackService() { }
-    private TabStackService() { }
+    private TabManager() { }
 
-    public static TabStackService Instance
+    public static TabManager Instance
     {
         get
         {

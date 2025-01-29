@@ -109,7 +109,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Tier3",
                             "Enterprise"});
 #line 8
- await testRunner.ThenAsync("The following textx are visible", ((string)(null)), table1, "Then ");
+ await testRunner.ThenAsync("The following Support Page texts are visible", ((string)(null)), table1, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -212,7 +212,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "3",
                             "Contact"});
 #line 26
- await testRunner.ThenAsync("The following textx are visible", ((string)(null)), table2, "Then ");
+ await testRunner.ThenAsync("The following about page texts are visible", ((string)(null)), table2, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
