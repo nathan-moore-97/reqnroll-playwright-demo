@@ -28,6 +28,11 @@ public class HomePage(IPageDependencyService pageDependencyService)
         await quickstartButton.ClickAsync();
     }
 
+    public async Task ClickOnDiscoverMoreButtonAsync()
+    {
+        return;
+    }
+
     public async Task<IPage> WaitForPopupAsync()
     {
         return await _pageDependencyService.Page.Result.WaitForPopupAsync();

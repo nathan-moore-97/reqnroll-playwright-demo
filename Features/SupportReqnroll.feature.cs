@@ -74,12 +74,12 @@ namespace ReqnrollTestProject.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("SubscriptionPackages")]
+        [NUnit.Framework.DescriptionAttribute("Subscription Packages")]
         public async System.Threading.Tasks.Task SubscriptionPackages()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("SubscriptionPackages", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("Subscription Packages", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -116,13 +116,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("QuickstartLoads")]
+        [NUnit.Framework.DescriptionAttribute("Quickstart Loads")]
         public async System.Threading.Tasks.Task QuickstartLoads()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("QuickstartLoads", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
+            Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("Quickstart Loads", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -132,15 +132,87 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 16
+#line 15
  await testRunner.GivenAsync("The Reqnroll page is loaded", ((string)(null)), ((Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 17
+#line 16
  await testRunner.WhenAsync("The quickstart button is clicked", ((string)(null)), ((Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 18
+#line 17
  await testRunner.ThenAsync("a new tab should be opened to \"https://docs.reqnroll.net/latest/quickstart/index." +
                         "html\"", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("The news feed loads")]
+        public async System.Threading.Tasks.Task TheNewsFeedLoads()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("The news feed loads", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 19
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 20
+ await testRunner.GivenAsync("The Reqnroll page is loaded", ((string)(null)), ((Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 21
+ await testRunner.ThenAsync("the news feed has items", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Learn More Headings")]
+        public async System.Threading.Tasks.Task LearnMoreHeadings()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("Learn More Headings", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 23
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 24
+ await testRunner.GivenAsync("The Reqnroll page is loaded", ((string)(null)), ((Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 25
+ await testRunner.WhenAsync("The Discover More button is clicked", ((string)(null)), ((Reqnroll.Table)(null)), "When ");
+#line hidden
+                Reqnroll.Table table2 = new Reqnroll.Table(new string[] {
+                            "Key",
+                            "Value"});
+                table2.AddRow(new string[] {
+                            "0",
+                            "Relation to SpecFlow"});
+                table2.AddRow(new string[] {
+                            "1",
+                            "Relation to Cucumber"});
+                table2.AddRow(new string[] {
+                            "2",
+                            "Sustainability"});
+                table2.AddRow(new string[] {
+                            "3",
+                            "Contact"});
+#line 26
+ await testRunner.ThenAsync("The following textx are visible", ((string)(null)), table2, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

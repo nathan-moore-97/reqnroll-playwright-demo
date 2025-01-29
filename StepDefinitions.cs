@@ -39,6 +39,13 @@ public class StepDefinitions(IPageService pageService)
 
     }
 
+    [When("The Discover More button is clicked")]
+    public void WhenTheDiscoverMoreButtonIsClicked()
+    {
+        throw new PendingStepException();
+    }
+
+
     [Then("The following textx are visible")]
     public async Task ThenTheFollowingTextxAreVisible(DataTable dataTable)
     {
@@ -56,5 +63,11 @@ public class StepDefinitions(IPageService pageService)
         IPage newTab;
         TabStackService.Instance.TryPop(out newTab);
         newTab.Url.Should().Be(url);
+    }
+
+    [Then("the news feed has items")]
+    public void ThenTheNewsFeedHasItems()
+    {
+        throw new PendingStepException();
     }
 }
